@@ -1,68 +1,229 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const navItems = [
+  {
+    name: "Data Room",
+    href: "/data-room",
+    icon: "📁",
+  },
+  {
+    name: "AI Compliance Chat",
+    href: "/chat",
+    icon: "💬",
+  },
+  {
+    name: "Admin Panel",
+    href: "/admin",
+    icon: "⚙️",
+  },
+  {
+    name: "Tree Editor",
+    href: "/tree-editor",
+    icon: "🌳",
+  },
+];
 
 export default function Home() {
+  const pathname = usePathname();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="flex min-h-screen bg-slate-950 text-white">
+      
+      {/* SIDEBAR */}
+      <aside className="fixed left-0 top-0 z-40 flex h-screen w-64 flex-col border-r border-slate-800 bg-slate-900">
+        
+        {/* Logo */}
+        <div className="flex h-20 items-center border-b border-slate-800 px-6">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-lg font-bold">
+            G
+          </div>
+
+          <div className="ml-3">
+            <h1 className="text-lg font-bold">GLYNAC</h1>
+            <p className="text-xs text-slate-400">
+              Wealth & Compliance
+            </p>
+          </div>
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 space-y-2 px-4 py-6">
+          <p className="mb-4 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
+            Platform
           </p>
+
+          {navItems.map((item) => {
+            const active = pathname === item.href;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition ${
+                  active
+                    ? "bg-blue-600 text-white shadow-lg shadow-blue-600/20"
+                    : "text-slate-400 hover:bg-slate-800 hover:text-white"
+                }`}
+              >
+                <span className="text-lg">{item.icon}</span>
+                <span>{item.name}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* User Profile */}
+        <div className="border-t border-slate-800 p-4">
+          <div className="flex items-center gap-3 rounded-xl bg-slate-800/60 p-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 font-semibold">
+              H
+            </div>
+
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold">
+                Heema
+              </p>
+              <p className="truncate text-xs text-slate-400">
+                Frontend Intern
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      </aside>
+
+      {/* MAIN CONTENT */}
+      <main className="ml-64 flex min-h-screen flex-1 flex-col">
+        
+        {/* TOP BAR */}
+        <header className="flex h-20 items-center justify-between border-b border-slate-800 bg-slate-900/80 px-8 backdrop-blur">
+          <div>
+            <h2 className="text-xl font-semibold">
+              Glynac Compliance Platform
+            </h2>
+            <p className="text-sm text-slate-400">
+              Enterprise workspace
+            </p>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button className="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">
+              🔔
+            </button>
+
+            <div className="text-right">
+              <p className="text-sm font-medium">Heema</p>
+              <p className="text-xs text-slate-500">
+                Frontend Intern
+              </p>
+            </div>
+          </div>
+        </header>
+
+        {/* DASHBOARD CONTENT */}
+        <section className="flex-1 p-8">
+          <div className="mb-8">
+            <p className="mb-2 text-sm font-medium text-blue-400">
+              Welcome back
+            </p>
+
+            <h1 className="text-3xl font-bold">
+              Glynac Platform
+            </h1>
+
+            <p className="mt-2 max-w-2xl text-slate-400">
+              Enterprise-grade wealth management and compliance
+              workspace.
+            </p>
+          </div>
+
+          {/* MODULE CARDS */}
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            
+            <Link
+              href="/data-room"
+              className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-blue-500"
+            >
+              <div className="mb-5 text-3xl">📁</div>
+
+              <h3 className="text-lg font-semibold">
+                Virtual Data Room
+              </h3>
+
+              <p className="mt-2 text-sm text-slate-400">
+                Manage secure documents, permissions and audit
+                trails.
+              </p>
+
+              <p className="mt-5 text-sm font-medium text-blue-400">
+                Open Data Room →
+              </p>
+            </Link>
+
+            <Link
+              href="/chat"
+              className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-blue-500"
+            >
+              <div className="mb-5 text-3xl">💬</div>
+
+              <h3 className="text-lg font-semibold">
+                AI Compliance Chat
+              </h3>
+
+              <p className="mt-2 text-sm text-slate-400">
+                Chat with the compliance assistant and explore
+                document citations.
+              </p>
+
+              <p className="mt-5 text-sm font-medium text-blue-400">
+                Open Chat →
+              </p>
+            </Link>
+
+            <Link
+              href="/admin"
+              className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-blue-500"
+            >
+              <div className="mb-5 text-3xl">⚙️</div>
+
+              <h3 className="text-lg font-semibold">
+                Admin Panel
+              </h3>
+
+              <p className="mt-2 text-sm text-slate-400">
+                Manage users, RBAC, compliance rules and
+                analytics.
+              </p>
+
+              <p className="mt-5 text-sm font-medium text-blue-400">
+                Open Admin →
+              </p>
+            </Link>
+
+            <Link
+              href="/tree-editor"
+              className="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-blue-500"
+            >
+              <div className="mb-5 text-3xl">🌳</div>
+
+              <h3 className="text-lg font-semibold">
+                Tree Editor
+              </h3>
+
+              <p className="mt-2 text-sm text-slate-400">
+                Build and manage interactive compliance
+                workflows.
+              </p>
+
+              <p className="mt-5 text-sm font-medium text-blue-400">
+                Open Tree Editor →
+              </p>
+            </Link>
+
+          </div>
+        </section>
       </main>
     </div>
   );
