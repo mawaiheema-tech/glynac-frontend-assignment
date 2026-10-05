@@ -420,7 +420,7 @@ function SectionHeader({
   return (
     <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex items-start gap-3">
-        <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-blue-300">
+        <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-blue-400/15 bg-gradient-to-br from-blue-500/10 to-indigo-500/5 text-blue-300 shadow-[0_0_20px_rgba(59,130,246,0.06)]">
           {icon}
         </div>
 
@@ -799,19 +799,24 @@ export default function AdminPage() {
   ======================================================= */
 
   return (
-    <main className="min-h-screen bg-[#070b14] text-white">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#050914] text-white selection:bg-blue-500/30">
+      <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
+        <div className="absolute -left-40 top-20 h-80 w-80 rounded-full bg-blue-500/[0.045] blur-3xl" />
+        <div className="absolute right-[-10rem] top-[30rem] h-96 w-96 rounded-full bg-indigo-500/[0.04] blur-3xl" />
+        <div className="absolute left-1/2 top-[75rem] h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-500/[0.025] blur-3xl" />
+      </div>
       {/* TOP HEADER */}
 
-      <div className="sticky top-0 z-30 border-b border-white/[0.08] bg-[#070b14]/95 backdrop-blur-xl">
+      <div className="sticky top-0 z-30 border-b border-white/[0.08] bg-[#050914]/90 backdrop-blur-2xl shadow-[0_8px_30px_rgba(0,0,0,0.18)]">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-400/20 bg-blue-500/10">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-400/20 bg-gradient-to-br from-blue-500/15 to-indigo-500/10 shadow-[0_0_24px_rgba(59,130,246,0.08)]">
               <ShieldCheck className="h-5 w-5 text-blue-300" />
             </div>
 
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-lg font-semibold">
+                <h1 className="text-lg font-semibold tracking-tight">
                   Enterprise Admin
                 </h1>
 
@@ -834,7 +839,7 @@ export default function AdminPage() {
 
             <button
               onClick={() => notify("Dashboard refreshed")}
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-slate-400 transition hover:bg-white/[0.07] hover:text-white"
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.035] text-slate-400 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-400/20 hover:bg-blue-500/10 hover:text-white"
             >
               <RefreshCw className="h-4 w-4" />
             </button>
@@ -842,7 +847,7 @@ export default function AdminPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1500px] space-y-7 px-4 py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1500px] space-y-8 px-4 py-7 sm:px-6 lg:px-8">
         {/* =================================================
             PAGE INTRO
         ================================================= */}
@@ -853,11 +858,11 @@ export default function AdminPage() {
             Administration
           </div>
 
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-[2rem]">
             Platform Overview
           </h2>
 
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
             Monitor compliance operations, manage access policies,
             review system activity and control platform configuration
             from one centralized workspace.
@@ -904,7 +909,7 @@ export default function AdminPage() {
             return (
               <div
                 key={metric.title}
-                className="group rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5 transition hover:border-white/[0.14] hover:bg-white/[0.04]"
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.055] to-white/[0.018] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.16)] transition duration-300 hover:-translate-y-0.5 hover:border-blue-400/20 hover:shadow-[0_18px_45px_rgba(0,0,0,0.24)]"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-blue-300">
@@ -942,7 +947,7 @@ export default function AdminPage() {
         <section className="grid gap-5 xl:grid-cols-[1.7fr_1fr]">
           {/* REVIEW TREND */}
 
-          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+          <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.14)]">
             <SectionHeader
               icon={<BarChart3 className="h-4 w-4" />}
               title="Review Trends"
@@ -1081,7 +1086,7 @@ export default function AdminPage() {
 
           {/* VIOLATION DISTRIBUTION */}
 
-          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+          <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.14)]">
             <SectionHeader
               icon={<AlertCircle className="h-4 w-4" />}
               title="Rule Violations"
@@ -1142,7 +1147,7 @@ export default function AdminPage() {
             USER MANAGEMENT
         ================================================= */}
 
-        <section className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+        <section className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.14)]">
           <SectionHeader
             icon={<Users className="h-4 w-4" />}
             title="User & RBAC Management"
@@ -1150,7 +1155,7 @@ export default function AdminPage() {
             action={
               <button
                 onClick={() => notify("Invite flow opened")}
-                className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-blue-400"
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 px-3.5 py-2 text-xs font-semibold text-white shadow-[0_8px_20px_rgba(59,130,246,0.18)] transition hover:-translate-y-0.5 hover:from-blue-400 hover:to-indigo-400"
               >
                 <Plus className="h-3.5 w-3.5" />
                 Invite User
@@ -1169,7 +1174,7 @@ export default function AdminPage() {
                   setUserPage(1);
                 }}
                 placeholder="Search by name, email, role or department..."
-                className="h-10 w-full rounded-lg border border-white/10 bg-black/10 pl-9 pr-3 text-xs text-white outline-none placeholder:text-slate-600 focus:border-blue-400/40"
+                className="h-10 w-full rounded-xl border border-white/10 bg-black/20 pl-9 pr-3 text-xs text-white outline-none placeholder:text-slate-600 transition focus:border-blue-400/50 focus:bg-white/[0.035] focus:ring-2 focus:ring-blue-500/10"
               />
             </div>
 
@@ -1184,7 +1189,7 @@ export default function AdminPage() {
                   );
                   setUserPage(1);
                 }}
-                className="h-10 min-w-[145px] appearance-none rounded-lg border border-white/10 bg-[#0b1020] pl-9 pr-8 text-xs text-slate-300 outline-none"
+                className="h-10 min-w-[145px] appearance-none rounded-xl border border-white/10 bg-[#0b1020] pl-9 pr-8 text-xs text-slate-300 outline-none transition focus:border-blue-400/40 focus:ring-2 focus:ring-blue-500/10"
               >
                 <option value="All">All Statuses</option>
                 <option value="Active">Active</option>
@@ -1252,7 +1257,7 @@ export default function AdminPage() {
                 {visibleUsers.map((user) => (
                   <tr
                     key={user.id}
-                    className="border-b border-white/[0.05] last:border-0"
+                    className="border-b border-white/[0.05] last:border-0 transition hover:bg-white/[0.018]"
                   >
                     <td className="py-4">
                       <div className="flex items-center gap-3">
@@ -1363,7 +1368,7 @@ export default function AdminPage() {
             COMPLIANCE RULES
         ================================================= */}
 
-        <section className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+        <section className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.14)]">
           <SectionHeader
             icon={<Shield className="h-4 w-4" />}
             title="Compliance Rule Policy Manager"
@@ -1371,7 +1376,7 @@ export default function AdminPage() {
             action={
               <button
                 onClick={() => setShowAddRule(true)}
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium text-white transition hover:bg-white/[0.08]"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.045] px-3.5 py-2 text-xs font-medium text-white shadow-sm transition hover:-translate-y-0.5 hover:border-white/15 hover:bg-white/[0.08]"
               >
                 <Plus className="h-3.5 w-3.5" />
                 Add Rule
@@ -1389,7 +1394,7 @@ export default function AdminPage() {
                   setRuleSearch(event.target.value)
                 }
                 placeholder="Search rule ID or definition..."
-                className="h-10 w-full rounded-lg border border-white/10 bg-black/10 pl-9 pr-3 text-xs text-white outline-none placeholder:text-slate-600 focus:border-blue-400/40"
+                className="h-10 w-full rounded-xl border border-white/10 bg-black/20 pl-9 pr-3 text-xs text-white outline-none placeholder:text-slate-600 transition focus:border-blue-400/50 focus:bg-white/[0.035] focus:ring-2 focus:ring-blue-500/10"
               />
             </div>
 
@@ -1401,7 +1406,7 @@ export default function AdminPage() {
                     event.target.value as "All" | Severity,
                   )
                 }
-                className="h-10 min-w-[145px] appearance-none rounded-lg border border-white/10 bg-[#0b1020] px-3 pr-8 text-xs text-slate-300 outline-none"
+                className="h-10 min-w-[145px] appearance-none rounded-xl border border-white/10 bg-[#0b1020] px-3 pr-8 text-xs text-slate-300 outline-none transition focus:border-blue-400/40 focus:ring-2 focus:ring-blue-500/10"
               >
                 <option value="All">All Severity</option>
                 <option value="Low">Low</option>
@@ -1514,7 +1519,7 @@ export default function AdminPage() {
           />
 
           <div className="grid gap-4 sm:grid-cols-3">
-            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+            <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.14)]">
               <div className="flex items-center justify-between">
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-500/10 text-blue-300">
                   <Gauge className="h-4 w-4" />
@@ -1541,7 +1546,7 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+            <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.14)]">
               <div className="flex items-center justify-between">
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-300">
                   <Database className="h-4 w-4" />
@@ -1566,7 +1571,7 @@ export default function AdminPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+            <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.14)]">
               <div className="flex items-center justify-between">
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500/10 text-amber-300">
                   <Zap className="h-4 w-4" />
@@ -1601,7 +1606,7 @@ export default function AdminPage() {
         <section className="grid gap-5 xl:grid-cols-[1.45fr_1fr]">
           {/* AUDIT LOG */}
 
-          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+          <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.14)]">
             <SectionHeader
               icon={<Activity className="h-4 w-4" />}
               title="Audit Activity"
@@ -1672,7 +1677,7 @@ export default function AdminPage() {
 
           {/* FEATURE FLAGS */}
 
-          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+          <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.14)]">
             <SectionHeader
               icon={<Flag className="h-4 w-4" />}
               title="Feature Flags"
@@ -1683,7 +1688,7 @@ export default function AdminPage() {
               {flags.map((flag) => (
                 <div
                   key={flag.id}
-                  className="rounded-xl border border-white/[0.06] bg-black/10 p-4"
+                  className="rounded-xl border border-white/[0.07] bg-black/15 p-4 shadow-[0_8px_22px_rgba(0,0,0,0.10)]"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex gap-3">
@@ -1764,8 +1769,8 @@ export default function AdminPage() {
       =================================================== */}
 
       {selectedUser && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
-          <div className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl border border-white/10 bg-[#0b1020] shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-md">
+          <div className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-white/10 bg-[#0b1020] shadow-[0_30px_100px_rgba(0,0,0,0.55)]">
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-white/[0.08] bg-[#0b1020]/95 px-5 py-4 backdrop-blur-xl">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-sm font-semibold text-blue-300">
@@ -1806,7 +1811,7 @@ export default function AdminPage() {
                     onChange={(event) =>
                       changeUserRole(event.target.value)
                     }
-                    className="h-10 w-full appearance-none rounded-lg border border-white/10 bg-black/20 px-3 pr-8 text-xs text-white outline-none focus:border-blue-400/40"
+                    className="h-10 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-3 pr-8 text-xs text-white outline-none transition focus:border-blue-400/40 focus:ring-2 focus:ring-blue-500/10"
                   >
                     <option value="System Administrator">
                       System Administrator
@@ -1868,7 +1873,7 @@ export default function AdminPage() {
                         return (
                           <tr
                             key={moduleName}
-                            className="border-b border-white/[0.05] last:border-0"
+                            className="border-b border-white/[0.05] last:border-0 transition hover:bg-white/[0.018]"
                           >
                             <td className="px-4 py-4 text-xs font-medium text-white">
                               {moduleName}
@@ -1931,7 +1936,7 @@ export default function AdminPage() {
 
                 <button
                   onClick={() => setSelectedUser(null)}
-                  className="rounded-lg bg-blue-500 px-4 py-2 text-xs font-semibold text-white transition hover:bg-blue-400"
+                  className="rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 px-4 py-2 text-xs font-semibold text-white shadow-[0_8px_20px_rgba(59,130,246,0.18)] transition hover:-translate-y-0.5 hover:from-blue-400 hover:to-indigo-400"
                 >
                   Save Changes
                 </button>
@@ -1946,8 +1951,8 @@ export default function AdminPage() {
       =================================================== */}
 
       {showAddRule && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-lg rounded-2xl border border-white/10 bg-[#0b1020] shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-md">
+          <div className="w-full max-w-lg rounded-3xl border border-white/10 bg-[#0b1020] shadow-[0_30px_100px_rgba(0,0,0,0.55)]">
             <div className="flex items-center justify-between border-b border-white/[0.08] px-5 py-4">
               <div>
                 <h3 className="text-sm font-semibold text-white">
@@ -1979,7 +1984,7 @@ export default function AdminPage() {
                     setNewRuleId(event.target.value)
                   }
                   placeholder="e.g. DISC-10"
-                  className="h-10 w-full rounded-lg border border-white/10 bg-black/20 px-3 text-xs text-white outline-none placeholder:text-slate-700 focus:border-blue-400/40"
+                  className="h-10 w-full rounded-xl border border-white/10 bg-black/20 px-3 text-xs text-white outline-none placeholder:text-slate-700 transition focus:border-blue-400/40 focus:ring-2 focus:ring-blue-500/10"
                 />
               </div>
 
@@ -1994,7 +1999,7 @@ export default function AdminPage() {
                     setNewRuleName(event.target.value)
                   }
                   placeholder="Rule definition name"
-                  className="h-10 w-full rounded-lg border border-white/10 bg-black/20 px-3 text-xs text-white outline-none placeholder:text-slate-700 focus:border-blue-400/40"
+                  className="h-10 w-full rounded-xl border border-white/10 bg-black/20 px-3 text-xs text-white outline-none placeholder:text-slate-700 transition focus:border-blue-400/40 focus:ring-2 focus:ring-blue-500/10"
                 />
               </div>
 
@@ -2010,7 +2015,7 @@ export default function AdminPage() {
                   }
                   placeholder="Describe what this rule validates..."
                   rows={4}
-                  className="w-full resize-none rounded-lg border border-white/10 bg-black/20 px-3 py-2.5 text-xs text-white outline-none placeholder:text-slate-700 focus:border-blue-400/40"
+                  className="w-full resize-none rounded-xl border border-white/10 bg-black/20 px-3 py-2.5 text-xs text-white outline-none placeholder:text-slate-700 transition focus:border-blue-400/40 focus:ring-2 focus:ring-blue-500/10"
                 />
               </div>
 
@@ -2049,7 +2054,7 @@ export default function AdminPage() {
 
                 <button
                   onClick={addRule}
-                  className="rounded-lg bg-blue-500 px-4 py-2 text-xs font-semibold text-white transition hover:bg-blue-400"
+                  className="rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 px-4 py-2 text-xs font-semibold text-white shadow-[0_8px_20px_rgba(59,130,246,0.18)] transition hover:-translate-y-0.5 hover:from-blue-400 hover:to-indigo-400"
                 >
                   Create Rule
                 </button>

@@ -798,8 +798,8 @@ export default function ChatPage() {
                   onClick={() => setActiveThreadId(thread.id)}
                   className={`group flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-left transition ${
                     activeThreadId === thread.id
-                      ? "bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
-                      : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                      ? "border-indigo-100 bg-gradient-to-r from-indigo-50 to-violet-50 text-indigo-700 shadow-sm dark:border-indigo-500/10 dark:from-indigo-500/10 dark:to-violet-500/10 dark:text-indigo-300"
+                      : "text-slate-600 hover:border-slate-200 hover:bg-slate-50 dark:text-slate-300 dark:hover:border-white/[0.05] dark:hover:bg-white/[0.035]"
                   }`}
                 >
                   <MessageSquare className="h-4 w-4 shrink-0" />
@@ -861,18 +861,22 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f7f8fc] text-slate-900 dark:bg-slate-950 dark:text-white">
-      <div className="flex min-h-screen">
+    <div className="relative min-h-screen overflow-hidden bg-[#f5f7fb] text-slate-900 dark:bg-[#070b14] dark:text-white">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-[18%] top-[-120px] h-[420px] w-[420px] rounded-full bg-indigo-500/[0.045] blur-[120px] dark:bg-indigo-500/[0.07]" />
+        <div className="absolute right-[8%] top-[32%] h-[360px] w-[360px] rounded-full bg-violet-500/[0.035] blur-[120px] dark:bg-violet-500/[0.045]" />
+      </div>
+      <div className="relative z-10 flex min-h-screen">
         {/* Sidebar */}
         <aside
-          className={`hidden border-r border-slate-200 bg-white transition-all duration-300 dark:border-slate-800 dark:bg-slate-950 lg:flex lg:flex-col ${
+          className={`hidden border-r border-slate-200/80 bg-white/95 shadow-[8px_0_35px_rgba(15,23,42,0.04)] backdrop-blur-xl transition-all duration-300 dark:border-white/[0.06] dark:bg-[#090e19]/95 dark:shadow-[8px_0_35px_rgba(0,0,0,0.18)] lg:flex lg:flex-col ${
             sidebarCollapsed ? "w-[72px]" : "w-[280px]"
           }`}
         >
-          <div className="flex h-16 items-center border-b border-slate-200 px-4 dark:border-slate-800">
+          <div className="flex h-16 items-center border-b border-slate-200/80 px-4 dark:border-white/[0.06]">
             {!sidebarCollapsed && (
               <div className="flex min-w-0 flex-1 items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-lg shadow-indigo-600/20">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-600/25">
                   <Sparkles className="h-4.5 w-4.5" />
                 </div>
                 <div>
@@ -888,7 +892,7 @@ export default function ChatPage() {
 
             <button
               onClick={() => setSidebarCollapsed((value) => !value)}
-              className="ml-auto rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-white"
+              className="ml-auto rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/[0.06] dark:hover:text-white"
             >
               {sidebarCollapsed ? (
                 <ChevronRight className="h-4 w-4" />
@@ -901,7 +905,7 @@ export default function ChatPage() {
           <div className="p-3">
             <button
               onClick={createThread}
-              className={`flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-3 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20 transition hover:bg-indigo-700 ${
+              className={`flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-3 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition duration-200 hover:-translate-y-0.5 hover:from-indigo-500 hover:to-violet-500 ${
                 sidebarCollapsed ? "px-0" : ""
               }`}
             >
@@ -924,7 +928,7 @@ export default function ChatPage() {
                 sidebarCollapsed ? "justify-center" : ""
               }`}
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-xs font-bold text-white dark:bg-white dark:text-slate-900">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-slate-900 to-slate-700 text-xs font-bold text-white shadow-sm dark:from-white dark:to-slate-200 dark:text-slate-900">
                 H
               </div>
 
@@ -943,10 +947,10 @@ export default function ChatPage() {
         {/* Main */}
         <main className="flex min-w-0 flex-1 flex-col">
           {/* Header */}
-          <header className="flex h-16 items-center border-b border-slate-200 bg-white/90 px-4 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/90 md:px-6">
+          <header className="flex h-16 items-center border-b border-slate-200/80 bg-white/90 px-4 shadow-[0_1px_20px_rgba(15,23,42,0.04)] backdrop-blur-2xl dark:border-white/[0.06] dark:bg-[#080d17]/90 dark:shadow-none md:px-6">
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-50 to-violet-50 text-indigo-600 ring-1 ring-indigo-100 dark:from-indigo-500/10 dark:to-violet-500/10 dark:text-indigo-400 dark:ring-indigo-500/10">
                   <Bot className="h-4 w-4" />
                 </div>
                 <div className="min-w-0">
@@ -987,7 +991,7 @@ export default function ChatPage() {
           </header>
 
           {searchOpen && (
-            <div className="border-b border-slate-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-950 md:px-6">
+            <div className="border-b border-slate-200/80 bg-white/90 px-4 py-3 shadow-sm backdrop-blur-xl dark:border-white/[0.06] dark:bg-[#080d17]/90 md:px-6">
               <div className="relative mx-auto max-w-4xl">
                 <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
                 <input
@@ -1012,7 +1016,7 @@ export default function ChatPage() {
           {/* Conversation */}
           <div className="flex min-h-0 flex-1 flex-col">
             <div className="flex-1 overflow-y-auto">
-              <div className="mx-auto max-w-4xl px-4 py-8 md:px-6">
+              <div className="mx-auto max-w-4xl px-4 py-9 md:px-6">
                 {activeThread?.messages.length === 0 ? (
                   <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
                     <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400">
@@ -1052,7 +1056,7 @@ export default function ChatPage() {
                         }`}
                       >
                         {message.role === "assistant" && (
-                          <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/15">
+                          <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-600/20 ring-4 ring-indigo-50 dark:ring-indigo-500/[0.06]">
                             <Bot className="h-4 w-4" />
                           </div>
                         )}
@@ -1065,10 +1069,10 @@ export default function ChatPage() {
                           }`}
                         >
                           <div
-                            className={`rounded-2xl ${
+                            className={`rounded-[20px] shadow-[0_10px_35px_rgba(15,23,42,0.06)] ${
                               message.role === "user"
-                                ? "rounded-tr-md bg-indigo-600 px-4 py-3 text-white shadow-lg shadow-indigo-600/10"
-                                : "rounded-tl-md border border-slate-200 bg-white px-5 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+                                ? "rounded-tr-md bg-gradient-to-br from-indigo-600 to-violet-600 px-4 py-3.5 text-white shadow-lg shadow-indigo-600/15"
+                                : "rounded-tl-md border border-slate-200/80 bg-white px-5 py-4.5 shadow-[0_10px_30px_rgba(15,23,42,0.045)] dark:border-white/[0.07] dark:bg-white/[0.025] dark:shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
                             }`}
                           >
                             {message.attachments &&
@@ -1217,7 +1221,7 @@ export default function ChatPage() {
                         </div>
 
                         {message.role === "user" && (
-                          <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900">
+                          <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-slate-900 to-slate-700 text-white shadow-sm dark:from-white dark:to-slate-200 dark:text-slate-900">
                             <User className="h-4 w-4" />
                           </div>
                         )}
@@ -1225,7 +1229,7 @@ export default function ChatPage() {
                     ))}
 
                     {isStreaming && (
-                      <div className="mb-8 flex gap-3">
+                      <div className="mb-9 flex gap-3">
                         <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white">
                           <Bot className="h-4 w-4" />
                         </div>
@@ -1246,7 +1250,7 @@ export default function ChatPage() {
             </div>
 
             {/* Composer */}
-            <div className="border-t border-slate-200 bg-white/95 px-4 pb-5 pt-4 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/95 md:px-6">
+            <div className="border-t border-slate-200/80 bg-white/90 px-4 pb-5 pt-4 shadow-[0_-10px_35px_rgba(15,23,42,0.04)] backdrop-blur-2xl dark:border-white/[0.06] dark:bg-[#080d17]/90 dark:shadow-[0_-10px_35px_rgba(0,0,0,0.12)] md:px-6">
               <div className="mx-auto max-w-4xl">
                 {activeThread?.messages.length > 0 && (
                   <div className="mb-3 flex gap-2 overflow-x-auto pb-1">
@@ -1296,9 +1300,9 @@ export default function ChatPage() {
                   onDragOver={(event) => event.preventDefault()}
                   onDragLeave={() => setDragging(false)}
                   onDrop={handleDrop}
-                  className={`relative rounded-2xl border bg-white shadow-sm transition dark:bg-slate-900 ${
+                  className={`relative rounded-2xl border bg-white shadow-[0_12px_35px_rgba(15,23,42,0.07)] transition duration-200 dark:bg-white/[0.025] dark:shadow-[0_12px_35px_rgba(0,0,0,0.14)] ${
                     dragging
-                      ? "border-indigo-500 ring-4 ring-indigo-100 dark:ring-indigo-500/10"
+                      ? "border-indigo-500 ring-4 ring-indigo-100/80 shadow-[0_0_0_1px_rgba(99,102,241,0.12),0_18px_45px_rgba(99,102,241,0.10)] dark:ring-indigo-500/10"
                       : "border-slate-200 dark:border-slate-700"
                   }`}
                 >
@@ -1350,7 +1354,7 @@ export default function ChatPage() {
                     <button
                       onClick={() => sendMessage()}
                       disabled={!messageInput.trim() || isStreaming}
-                      className="flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-indigo-600/20 transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-40"
+                      className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-indigo-600/20 transition duration-200 hover:-translate-y-0.5 hover:from-indigo-500 hover:to-violet-500 disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       {isStreaming ? "Thinking..." : "Send"}
                       <Send className="h-3.5 w-3.5" />
@@ -1369,11 +1373,11 @@ export default function ChatPage() {
 
       {/* Citation Popover */}
       {citation && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-lg overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/55 p-4 backdrop-blur-md">
+          <div className="w-full max-w-lg overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_30px_90px_rgba(15,23,42,0.22)] dark:border-white/[0.08] dark:bg-[#0b111d] dark:shadow-[0_30px_90px_rgba(0,0,0,0.5)]">
             <div className="flex items-start justify-between border-b border-slate-200 p-5 dark:border-slate-800">
               <div className="flex gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-50 to-violet-50 text-indigo-600 ring-1 ring-indigo-100 dark:from-indigo-500/10 dark:to-violet-500/10 dark:text-indigo-400 dark:ring-indigo-500/10">
                   <FileText className="h-5 w-5" />
                 </div>
 

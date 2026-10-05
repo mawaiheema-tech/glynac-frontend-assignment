@@ -929,7 +929,7 @@ export default function DataRoomPage() {
               Image Preview
             </p>
 
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
               Mock image renderer
             </p>
           </div>
@@ -971,9 +971,14 @@ export default function DataRoomPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#070b14] text-white">
+    <div className="relative min-h-screen bg-[#060a12] text-white selection:bg-blue-500/30">
+      <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
+        <div className="absolute left-[8%] top-[-10%] h-[420px] w-[420px] rounded-full bg-blue-600/[0.055] blur-[120px]" />
+        <div className="absolute right-[4%] top-[28%] h-[360px] w-[360px] rounded-full bg-indigo-500/[0.035] blur-[110px]" />
+      </div>
+      <div className="relative z-10">
       {/* HEADER */}
-      <header className="sticky top-0 z-30 border-b border-white/[0.06] bg-[#070b14]/95 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 border-b border-white/[0.07] bg-[#060a12]/90 backdrop-blur-2xl shadow-[0_1px_30px_rgba(0,0,0,0.18)]">
         <div className="flex h-16 items-center justify-between px-5 lg:px-8">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
@@ -1040,9 +1045,9 @@ export default function DataRoomPage() {
       </header>
 
       {/* MAIN */}
-      <main className="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-[1600px] px-4 py-7 sm:px-6 lg:px-8">
         {/* TITLE */}
-        <div className="mb-7 flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
+        <div className="mb-7 flex flex-col justify-between gap-6 xl:flex-row xl:items-end">
           <div>
             <div className="mb-3 flex items-center gap-2 text-xs text-slate-500">
               <span>Workspace</span>
@@ -1054,11 +1059,11 @@ export default function DataRoomPage() {
               </span>
             </div>
 
-            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
               Secure Data Room
             </h1>
 
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
               Organize, review and control access
               to sensitive documents.
             </p>
@@ -1069,7 +1074,7 @@ export default function DataRoomPage() {
               onClick={() =>
                 setShowAuditDrawer(true)
               }
-              className="inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-slate-300 transition hover:border-white/[0.14] hover:bg-white/[0.06] hover:text-white"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/[0.09] bg-white/[0.035] px-4 py-2.5 text-sm font-medium text-slate-300 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-white/[0.16] hover:bg-white/[0.07] hover:text-white"
             >
               <History size={16} />
               Audit Log
@@ -1077,7 +1082,7 @@ export default function DataRoomPage() {
 
             <button
               onClick={openCreateFolder}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/[0.09] bg-white/[0.035] px-4 py-2.5 text-sm font-medium text-slate-300 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-white/[0.07] hover:text-white"
             >
               <FolderOpen size={16} />
               New Folder
@@ -1087,7 +1092,7 @@ export default function DataRoomPage() {
               onClick={() =>
                 setShowUploadModal(true)
               }
-              className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-500"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition duration-200 hover:-translate-y-0.5 hover:from-blue-500 hover:to-indigo-500"
             >
               <Upload size={16} />
               Upload Files
@@ -1096,7 +1101,7 @@ export default function DataRoomPage() {
         </div>
 
         {/* SUMMARY */}
-        <div className="mb-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <div className="mb-7 grid grid-cols-2 gap-3 lg:grid-cols-4">
           {[
             {
               label: "Total Documents",
@@ -1128,7 +1133,7 @@ export default function DataRoomPage() {
             return (
               <div
                 key={item.label}
-                className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition hover:border-white/[0.12] hover:bg-white/[0.04]"
+                className="group rounded-2xl border border-white/[0.075] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-4 shadow-[0_10px_35px_rgba(0,0,0,0.12)] transition duration-200 hover:-translate-y-0.5 hover:border-blue-400/20 hover:from-white/[0.065] hover:to-white/[0.025]"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
@@ -1158,7 +1163,7 @@ export default function DataRoomPage() {
         </div>
 
         {/* SEARCH */}
-        <div className="mb-5 flex flex-col gap-3 lg:flex-row">
+        <div className="mb-5 flex flex-col gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.018] p-2 shadow-[0_8px_30px_rgba(0,0,0,0.12)] lg:flex-row">
           <div className="relative flex-1">
             <Search
               size={17}
@@ -1171,7 +1176,7 @@ export default function DataRoomPage() {
                 setSearch(event.target.value)
               }
               placeholder="Search documents, owners or file types..."
-              className="w-full rounded-xl border border-white/[0.08] bg-white/[0.025] py-3 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-blue-500/50 focus:bg-white/[0.04]"
+              className="w-full rounded-xl border border-white/[0.07] bg-[#0b111d] py-3 pl-11 pr-4 text-sm text-white outline-none transition duration-200 placeholder:text-slate-600 focus:border-blue-500/50 focus:bg-blue-500/[0.035] focus:ring-2 focus:ring-blue-500/10"
             />
           </div>
 
@@ -1192,7 +1197,7 @@ export default function DataRoomPage() {
 
         {/* FILTERS */}
         {showFilters && (
-          <div className="mb-5 grid gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 sm:grid-cols-3">
+          <div className="mb-5 grid gap-3 rounded-2xl border border-white/[0.07] bg-gradient-to-br from-white/[0.035] to-white/[0.018] p-4 shadow-[0_10px_35px_rgba(0,0,0,0.1)] sm:grid-cols-3">
             <div>
               <label className="mb-2 block text-xs font-medium text-slate-500">
                 File Type
@@ -1285,7 +1290,7 @@ export default function DataRoomPage() {
         )}
 
         {/* BREADCRUMBS */}
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4 flex items-center justify-between rounded-xl border border-white/[0.045] bg-white/[0.012] px-3 py-2">
           <div className="flex min-w-0 items-center gap-1 overflow-x-auto text-sm">
             {breadcrumbFolders.map(
               (folder, index) => (
@@ -1347,7 +1352,7 @@ export default function DataRoomPage() {
         </div>
 
         {/* TOOLBAR */}
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-3 py-2">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/[0.065] bg-gradient-to-r from-white/[0.035] to-white/[0.018] px-3 py-2.5 shadow-sm">
           <div className="flex items-center gap-3">
             <button
               onClick={toggleSelectAll}
@@ -1444,7 +1449,7 @@ export default function DataRoomPage() {
                 (folder) => (
                   <div
                     key={folder.id}
-                    className="group relative rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition hover:border-blue-500/20 hover:bg-white/[0.04]"
+                    className="group relative overflow-hidden rounded-2xl border border-white/[0.075] bg-gradient-to-br from-white/[0.045] to-white/[0.018] p-4 shadow-[0_10px_35px_rgba(0,0,0,0.12)] transition duration-200 hover:-translate-y-0.5 hover:border-blue-500/25 hover:from-white/[0.06] hover:to-white/[0.025]"
                   >
                     <button
                       onClick={() =>
@@ -1563,7 +1568,7 @@ export default function DataRoomPage() {
                   return (
                     <div
                       key={document.id}
-                      className={`group relative overflow-hidden rounded-2xl border bg-white/[0.025] transition hover:-translate-y-0.5 hover:bg-white/[0.04] ${
+                      className={`group relative overflow-hidden rounded-2xl border bg-gradient-to-br from-white/[0.045] to-white/[0.018] shadow-[0_12px_38px_rgba(0,0,0,0.14)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.22)] ${
                         selected
                           ? "border-blue-500/40"
                           : "border-white/[0.07] hover:border-white/[0.13]"
@@ -1709,7 +1714,7 @@ export default function DataRoomPage() {
               )}
             </div>
           ) : (
-            <div className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02]">
+            <div className="overflow-hidden rounded-2xl border border-white/[0.075] bg-gradient-to-br from-white/[0.035] to-white/[0.015] shadow-[0_12px_35px_rgba(0,0,0,0.12)]">
               <div className="hidden grid-cols-[40px_1fr_100px_150px_130px_100px] gap-4 border-b border-white/[0.06] px-4 py-3 text-[10px] font-semibold uppercase tracking-wider text-slate-600 md:grid">
                 <div />
                 <div>Name</div>
@@ -1831,7 +1836,7 @@ export default function DataRoomPage() {
         </section>
 
         {/* SECURITY FOOTER */}
-        <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-white/[0.06] bg-gradient-to-r from-blue-500/[0.05] to-purple-500/[0.04] p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-blue-400/[0.10] bg-gradient-to-r from-blue-500/[0.07] via-indigo-500/[0.035] to-purple-500/[0.05] p-4 shadow-[0_12px_40px_rgba(37,99,235,0.06)] sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
               <Shield size={17} />
@@ -1861,8 +1866,8 @@ export default function DataRoomPage() {
 
       {/* PREVIEW MODAL */}
       {selectedDocument && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-3 backdrop-blur-sm sm:p-6">
-          <div className="flex h-[94vh] w-full max-w-7xl flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0a0f1b] shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#02040a]/80 p-3 backdrop-blur-md sm:p-6">
+          <div className="flex h-[94vh] w-full max-w-7xl flex-col overflow-hidden rounded-3xl border border-white/[0.10] bg-[#090f1b] shadow-[0_30px_100px_rgba(0,0,0,0.55)]">
             <div className="flex items-center justify-between border-b border-white/[0.07] px-5 py-4">
               <div className="flex min-w-0 items-center gap-3">
                 <button
@@ -2537,6 +2542,7 @@ export default function DataRoomPage() {
           </aside>
         </div>
       )}
+      </div>
     </div>
   );
 }
